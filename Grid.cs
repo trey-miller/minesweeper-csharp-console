@@ -52,6 +52,11 @@ namespace MinesweeperConsole
             return false;
         }
 
+        /// <summary>
+        /// Toggles between Flagged and Covered. Does nothing if cell is already Uncovered.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void ToggleFlag(int x, int y)
         {
             var cell = Cells[x, y];
@@ -74,7 +79,7 @@ namespace MinesweeperConsole
             while (cellsToExpose.Count > 0)
             {
                 var cell = cellsToExpose.Dequeue();
-                if (cell.IsBomb || cell.State != CellState.Covered)
+                if (cell.State == CellState.Uncovered)
                     continue;
 
                 cell.State = CellState.Uncovered;

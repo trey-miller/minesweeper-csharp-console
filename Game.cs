@@ -27,9 +27,8 @@ namespace MinesweeperConsole
 
             while (!NextTurn())
             {
-                if (Grid.Cells.Cast<Cell>().All(cell => cell.State != CellState.Covered))
+                if (IsWin())
                 {
-                    // no more uncovered. A win!
                     Grid.Print();
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.White;
@@ -71,6 +70,11 @@ namespace MinesweeperConsole
                 return false;
             }
             return Grid.Uncover(x, y);
+        }
+
+        private bool IsWin()
+        {
+            return Grid.Cells.Cast<Cell>().All(cell => cell.IsBomb || cell.State == CellState.Uncovered);
         }
     }
 }

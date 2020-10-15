@@ -79,7 +79,7 @@ namespace MinesweeperConsole
             while (cellsToExpose.Count > 0)
             {
                 var cell = cellsToExpose.Dequeue();
-                if (cell.State == CellState.Uncovered)
+                if (cell.State == CellState.Uncovered || cell.State == CellState.Flagged)
                     continue;
 
                 cell.State = CellState.Uncovered;

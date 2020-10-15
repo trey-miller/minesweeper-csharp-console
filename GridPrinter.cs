@@ -19,6 +19,7 @@ namespace MinesweeperConsole
                 {
                     GetSprite(cells[x, y], showAll).Draw();
                 }
+                Console.ResetColor();
                 Console.Write('\n');
             }
             Console.ResetColor();
@@ -50,9 +51,10 @@ namespace MinesweeperConsole
                     FG = ConsoleColor.White,
                     Char = 'B',
                 };
+            char c = cell.AdjacentBombsCount.ToString()[0];
             return new CellSprite
             {
-                Char = cell.AdjacentBombsCount.ToString()[0],
+                Char = c, // c == '0' ? ' ' : c,
             };
         }
 
